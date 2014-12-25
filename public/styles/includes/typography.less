@@ -1,0 +1,160 @@
+body {
+  font: @main-font-size/@main-line-height @main-font-family;
+  color: @main-text-color;
+  *font-size: small;
+}
+
+select, input, textarea, button {
+  font: 99% @main-font-family;
+}
+
+pre, code, kbd, samp {
+  font-family: monospace, sans-serif;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+small {
+  font-size: 85%;
+}
+
+strong, b {
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+}
+
+td, td img {
+  vertical-align: top;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+sup {
+  vertical-align: super;
+  font-size: smaller;
+}
+
+pre {
+  padding: 15px;
+  white-space: pre;
+  white-space: pre-wrap;
+  white-space: pre-line;
+  word-wrap: break-word;
+}
+
+.ie7 img {
+  -ms-interpolation-mode: bicubic;
+}
+
+/* --------------------------------------------------
+    SELECTION */
+
+::-moz-selection {
+  background: #09f;
+  color: #fff;
+  text-shadow: none;
+}
+
+::selection {
+  background: #09f;
+  color: #fff;
+  text-shadow: none;
+}
+
+/* ==============================================
+    Links
+============================================== */
+
+a {
+  color: @main-link-color;
+
+  &:active, &:visited {
+    color: @main-link-color;
+  }
+
+  &:hover {
+    text-decoration: none;
+    color: @hover-link-color;
+  }
+
+  &:link {
+    -webkit-tap-highlight-color: @main-link-color;
+  }
+}
+
+/* ==============================================
+    Headers
+============================================== */
+
+h1, .h1 {
+  font: @h1-font-size/@main-line-height @h1-font-family;
+  color: @h1-color;
+}
+
+h2, .h2 {
+  font: @h2-font-size/@main-line-height @h2-font-family;
+  color: @h2-color;
+}
+
+h3, .h3 {
+  font: @h3-font-size/@main-line-height @h3-font-family;
+  color: @h3-color;
+}
+
+h4, .h4 {
+  font: @h4-font-size/@main-line-height @h4-font-family;
+  color: @h4-color;
+}
+
+h5, .h5 {
+  font: @h5-font-size/@main-line-height @h5-font-family;
+  color: @h5-color;
+}
+
+h6, .h6 {
+  font: @h6-font-size/@main-line-height @h6-font-family;
+  color: @h6-color;
+}
+
+/* ==============================================
+    Articles styles
+============================================== */
+
+.text-content {
+  p {
+    margin-bottom: 18px;
+  }
+
+  ul, ol {
+    margin-bottom: 18px;
+
+    li {
+      margin-bottom: 6px;
+    }
+  }
+
+  table {
+    margin-bottom: 18px;
+  }
+
+  tr {
+
+    &:hover td {
+
+    }
+  }
+
+  th {
+  }
+
+  td {
+  }
+}

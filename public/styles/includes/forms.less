@@ -1,0 +1,81 @@
+/* ==============================================
+    Reset & base styles
+============================================== */
+
+select, input, textarea {
+  font: 12px/18px arial, sans-serif;
+}
+
+label, input[type=button], input[type=submit], button {
+  cursor: pointer;
+}
+
+button, input, select, textarea {
+  margin: 0;
+}
+
+textarea {
+  overflow: auto;
+  resize: none;
+}
+
+input[type="radio"] {
+  vertical-align: text-bottom;
+}
+
+input[type="checkbox"] {
+  vertical-align: bottom;
+}
+
+.ie7 input[type="checkbox"] {
+  vertical-align: baseline;
+}
+
+button {
+  width: auto;
+  overflow: visible;
+}
+
+/* --------------------------------------------------
+    GLOBAL */
+
+.form-item {
+  margin-bottom: 10px;
+}
+
+.form-item label {
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.form-submit {
+  text-align: right;
+}
+
+input[type="text"], input[type="password"], textarea, select {
+  width: 100%;
+  padding: 4px 9px;
+  border: 1px solid #ccc;
+}
+
+input[type="text"], input[type="password"], select {
+  height: 30px;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, select:focus, textarea:focus {
+  border-color: #09f;
+}
+
+input[type="submit"], input[type="button"], button {
+  padding: 4px 9px;
+  border: 1px solid #ccc;
+  background: #eee;
+}
+
+/* --------------------------------------------------
+    VALIDATION */
+
+.error input, .error textarea, .error select,
+.error input:focus, .error textarea:focus, .error select:focus {
+  border-color: #c00;
+}
