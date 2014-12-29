@@ -3,7 +3,8 @@
 ============================================== */
 
 select, input, textarea {
-  font: 12px/18px arial, sans-serif;
+  font: @main-font-size/@main-line-height @main-font-family;
+  color: @main-text-color;
 }
 
 label, input[type=button], input[type=submit], button {
@@ -36,8 +37,9 @@ button {
   overflow: visible;
 }
 
-/* --------------------------------------------------
-    GLOBAL */
+/* ==============================================
+    Forms layout
+============================================== */
 
 .form-item {
   margin-bottom: 10px;
@@ -52,30 +54,36 @@ button {
   text-align: right;
 }
 
-input[type="text"], input[type="password"], textarea, select {
-  width: 100%;
-  padding: 4px 9px;
-  border: 1px solid #ccc;
-}
+/* ==============================================
+    Basic elements styles
+============================================== */
 
-input[type="text"], input[type="password"], select {
-  height: 30px;
+input[type="text"], input[type="password"], textarea, select {
+  .box-shadow(inset 0 4px 4px rgba(0, 0, 0, .07));
+
+  background: @input-bg-color;
+  width: 100%;
+  padding: @input-padding-v @input-padding-h;
+  border: 1px solid @input-border-color;
 }
 
 input[type="text"]:focus, input[type="password"]:focus, select:focus, textarea:focus {
-  border-color: #09f;
+  border-color: @input-border-color-focus;
 }
 
 input[type="submit"], input[type="button"], button {
-  padding: 4px 9px;
-  border: 1px solid #ccc;
+  padding: @button-padding-v @button-padding-h;
+  border: 1px solid @button-border-color;
   background: #eee;
 }
 
-/* --------------------------------------------------
-    VALIDATION */
+/* ==============================================
+    Form validation
+============================================== */
 
-.error input, .error textarea, .error select,
-.error input:focus, .error textarea:focus, .error select:focus {
-  border-color: #c00;
+.error {
+  input, textarea, select,
+  input:focus, textarea:focus, select:focus {
+    border-color: #c00;
+  }
 }

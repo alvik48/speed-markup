@@ -1,0 +1,22 @@
+{
+  "name": "speed-markup",
+  "version": "0.0.1",
+  "homepage": "https://github.com/alvik48/speed-markup",
+  "authors": [
+    "alvik48 <alvik48@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3",
+    "underscore": "~1.7.0",
+    "backbone": "~1.1.2"
+  }
+}

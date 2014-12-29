@@ -1,9 +1,9 @@
 {
-  "name": "markup-starter",
-  "version": "0.0.0",
+  "name": "speed-markup",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "gulp"
   },
   "dependencies": {
     "express": "~4.9.0",
@@ -20,7 +20,6 @@
     "gulp-concat": "^2.4.2",
     "tiny-lr": "^0.1.4",
     "gulp-livereload": "^3.0.2",
-    "gulp-browserify": "^0.5.0",
     "gulp-less": "^2.0.1",
     "browser-sync": "^1.8.1",
     "gulp-minify-css": "^0.3.11",
@@ -29,7 +28,28 @@
     "gulp-rename": "^1.2.0",
     "gulp-imagemin": "^2.0.0",
     "browserify": "^8.0.1",
+    "browserify-shim": "^3.8.1",
     "gulp-streamify": "0.0.5",
-    "gulp-uglify": "^1.0.2"
+    "gulp-uglify": "^1.0.2",
+    "jquery": "^2.1.3",
+    "underscore": "^1.7.0",
+    "backbone": "^1.1.2",
+    "vinyl-transform": "^1.0.0"
+  },
+  "browserify": {
+    "transform": ["browserify-shim"]
+  },
+  "browser": {
+    "jquery": "./bower_components/jquery/dist/jquery.js",
+    "underscore": "./bower_components/underscore/underscore.js",
+    "backbone": "./bower_components/backbone/backbone.js"
+  },
+  "browserify-shim": {
+    "jquery": { "exports": "$" },
+    "underscore": { "exports": "_" },
+    "./bower_components/backbone/backbone.js": {
+      "depends": ["underscore", "jquery"],
+      "exports": "Backbone"
+    }
   }
 }
