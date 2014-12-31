@@ -18,6 +18,7 @@ var transform = require('vinyl-transform');
 var uglify = require('gulp-uglify');
 
 var ejs = require('gulp-ejs');
+var replace = require('gulp-replace');
 
 /* ==============================================
     Bootstrap
@@ -127,12 +128,16 @@ gulp.task('build', [
     'buildHTML',
     'buildCSS',
     'buildImages',
-    'buildJS'
+    'buildJS',
+    'buildFonts'
 ]);
 
 gulp.task('buildHTML', function() {
     gulp.src('./views/*.html')
         .pipe(ejs())
+        .pipe(replace('/styles/', './styles/'))
+        .pipe(replace('/js/', './js/'))
+        .pipe(replace('/images/', './images/'))
         .pipe(gulp.dest('./build/'));
 });
 
@@ -148,7 +153,7 @@ gulp.task('buildImages', function() {
         '!./public/images/inline/*.*',
         '!./public/images/sprite/*.*'
     ])
-        .pip(imagemin())
+        .pipe(imagemin())
         .pipe(gulp.dest('./build/images/'));
 });
 
@@ -156,4 +161,9 @@ gulp.task('buildJS', function() {
     gulp.src('./public/js/app.js')
         .pipe(uglify())
         .pipe(gulp.dest('./build/js/'));
+});
+
+gulp.task('buildFonts', function() {
+    gulp.src('./public/fonts/*.*')
+        .pipe(gulp.dest('./build/fonts/'));
 });

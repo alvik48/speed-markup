@@ -17,9 +17,6 @@ coverage
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
-# Compiled binary addons (http://nodejs.org/api/addons.html)
-build/Release
-
 # Dependency directories
 node_modules
 bower_components
@@ -29,6 +26,8 @@ bower_components
 
 # Project compiled files
 public/styles/app.css
-public/styles/includes/sprite.less
-public/styles/includes/inline.less
 public/js/app.js
+public/images/compiled
+
+# Builded project
+build
