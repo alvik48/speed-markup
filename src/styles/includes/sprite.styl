@@ -1,0 +1,25 @@
+$mail = -5px -5px 24px 24px
+$phone = -5px -39px 24px 24px
+$skype = -5px -73px 24px 24px
+$twitter = -5px -107px 24px 24px
+
+sprite-width($sprite)
+  width $sprite[2]
+
+sprite-height($sprite)
+  height $sprite[3]
+
+sprite-position($sprite)
+  background-position $sprite[0]  $sprite[1]
+
+sprite($sprite)
+  sprite-position($sprite)
+  background-repeat no-repeat
+  overflow hidden
+  display block
+  sprite-width($sprite)
+  sprite-height($sprite)
+
+.icon
+  background-image url('../images/compiled/elements.png')
+

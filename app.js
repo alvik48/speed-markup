@@ -27,7 +27,7 @@ app.engine('.html', ejs.__express);
     Bootstrap modules
 ============================================== */
 
-app.use(favicon(__dirname + '/public/favicon.png'));
+app.use(favicon(__dirname + '/src/favicon.png'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));

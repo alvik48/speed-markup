@@ -1,35 +1,54 @@
+/*
+* TODO
+*
+* 1. Change sprite library to
+*    https://github.com/Ensighten/spritesmith
+*
+* 2. (?) Remove browserify (uglify)
+*
+* 3. Generate source maps for js&css
+*
+**/
+
+/* main */
 var app = require('./app');
 var gulp = require('gulp');
-var _if = require('gulp-if');
-var rename = require('gulp-rename');
 
+/* util */
+var _if = require('gulp-if');
+var replace = require('gulp-replace');
+
+/* images */
 var sprite = require('css-sprite').stream;
 var imagemin = require('gulp-imagemin');
-
 var browserSync = require('browser-sync');
+
+/* browser */
 var reload = browserSync.reload;
 
-var less = require('gulp-less');
+/* styles */
+var stylus = require('gulp-stylus');
 var minifyCSS = require('gulp-minify-css');
 var autoprefixer = require('gulp-autoprefixer');
 
+/* js */
 var browserify = require('browserify');
 var transform = require('vinyl-transform');
 var uglify = require('gulp-uglify');
 
-var ejs = require('gulp-ejs');
-var replace = require('gulp-replace');
+/* html */
+var include = require('gulp-file-include');
 
 /* ==============================================
     Bootstrap
 ============================================== */
 
-gulp.task('default', ['server', 'browserSync', 'sprite', 'base64', 'less', 'js'], function() {
-    gulp.watch('./public/styles/**/*.less', ['less']);
-    gulp.watch('./public/images/sprite/*.png', ['sprite']);
-    gulp.watch('./public/images/inline/*.png', ['base64']);
-    gulp.watch(['./public/js/**/*.js', '!./public/js/app.js'], ['js']);
-    gulp.watch('./views/**/*.html', ['ejs']);
+gulp.task('default', ['server', 'browserSync', 'sprite', 'base64', 'styles', 'js', 'html'], function() {
+    gulp.watch('./src/styles/**/*.styl', ['styles']);
+    gulp.watch('./src/images/sprite/*.png', ['sprite']);
+    gulp.watch('./src/images/inline/*.png', ['base64']);
+    gulp.watch(['./src/js/**/*.js', '!./public/js/app.js'], ['js']);
+    gulp.watch('./src/html/**/*.html', ['html']);
 });
 
 /* ==============================================
@@ -54,9 +73,9 @@ gulp.task('browserSync', function() {
     Less compile
 ============================================== */
 
-gulp.task('less', function() {
-    gulp.src('./public/styles/app.less')
-        .pipe(less())
+gulp.task('styles', function() {
+    gulp.src('./src/styles/app.styl')
+        .pipe(stylus())
         .pipe(autoprefixer({
             browsers: ['last 2 versions', 'Explorer > 8'],
             cascade: false
@@ -66,30 +85,30 @@ gulp.task('less', function() {
 });
 
 /* ==============================================
-    Generate sprite & less stylesheet
+    Generate sprite & stylus stylesheet
     Generate stylesheet with inline images
 ============================================== */
 
 gulp.task('sprite', function() {
-    gulp.src('./public/images/sprite/*.*')
+    gulp.src('./src/images/sprite/*.*')
         .pipe(sprite({
             name: 'elements',
-            style: 'sprite.less',
+            style: 'sprite.styl',
             cssPath: './../images/compiled',
-            processor: 'less'
+            processor: 'stylus'
         }))
-        .pipe(_if('*.png', gulp.dest('./public/images/compiled'), gulp.dest('./public/styles/includes/')))
+        .pipe(_if('*.png', gulp.dest('./public/images/compiled'), gulp.dest('./src/styles/includes/')))
         .pipe(reload({stream:true}));
 });
 
 gulp.task('base64', function() {
-    gulp.src('./public/images/inline/*.*')
+    gulp.src('./src/images/inline/*.*')
         .pipe(sprite({
             base64: true,
-            style: 'inline.less',
-            processor: 'less'
+            style: 'inline.styl',
+            processor: 'stylus'
         }))
-        .pipe(gulp.dest('./public/styles/includes/'))
+        .pipe(gulp.dest('./src/styles/includes/'))
         .pipe(reload({stream:true}));
 });
 
@@ -103,19 +122,20 @@ gulp.task('js', function() {
         return b.bundle();
     });
 
-    return gulp.src(['./public/js/main.js'])
+    return gulp.src(['./src/js/app.js'])
         .pipe(browserified)
-        .pipe(rename('app.js'))
         .pipe(gulp.dest('./public/js/'))
         .pipe(reload({stream:true}));
 });
 
 /* ==============================================
-    Reload server on ejs update
+    Reload server on html update
 ============================================== */
 
-gulp.task('ejs', function() {
-    gulp.src('./views/**/*.html')
+gulp.task('html', function() {
+    gulp.src('./src/html/*.html')
+        .pipe(include())
+        .pipe(gulp.dest('./views/'))
         .pipe(reload({stream:true}));
 });
 
@@ -124,7 +144,10 @@ gulp.task('ejs', function() {
 ============================================== */
 
 gulp.task('build', [
-    'sprite', 'base64', 'less',
+    'sprite',
+    'base64',
+    'styles',
+    'html',
     'buildHTML',
     'buildCSS',
     'buildImages',
@@ -134,7 +157,6 @@ gulp.task('build', [
 
 gulp.task('buildHTML', function() {
     gulp.src('./views/*.html')
-        .pipe(ejs())
         .pipe(replace('/styles/', './styles/'))
         .pipe(replace('/js/', './js/'))
         .pipe(replace('/images/', './images/'))

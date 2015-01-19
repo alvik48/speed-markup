@@ -1,0 +1,23 @@
+$triangle-down = -5px -5px 12px 16px
+$triangle-up = -5px -31px 12px 16px
+
+sprite-width($sprite)
+  width $sprite[2]
+
+sprite-height($sprite)
+  height $sprite[3]
+
+sprite-position($sprite)
+  background-position $sprite[0]  $sprite[1]
+
+sprite($sprite)
+  sprite-position($sprite)
+  background-repeat no-repeat
+  overflow hidden
+  display block
+  sprite-width($sprite)
+  sprite-height($sprite)
+
+.icon
+  background-image url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAA0CAYAAACO0MgGAAAA/klEQVRYCe2W0Q6DIAxFx7J/3ouJz/vkPTGuSoF6RTJCYkxJmpUCx3JXBee9f4xozxFQMA0syr7EyxznXNY7d1kBmMai232kmMOe8K632CT7zx2UirZtHAvOwAtUr1/KjwbTk2twyZQyaDCB4TG4QDGBMmgQs8uWw9/lEAc7gHU7eKUj8KPnUwYN2rdCa9fTp39eDzCuvc9HKO7o71+TQqQzKUQKuwmJFJeoijmkA2trjYcpgDgcYTs4ZdBgmVMOpXDKoMEEZtAdnDJocAXXoAWcMmhwvf18A7/FJsagZ97BhSUJpDyAdbtEHeukqn3LWOShVSGjHY5pLOINk+IHd0h1kDqiHRAAAAAASUVORK5CYII=')
+
