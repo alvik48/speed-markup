@@ -12,12 +12,12 @@ var Backbone = require('backbone');
     Require views
 ============================================== */
 
-var SamplesView = require('./views/samples.view');
+var TopNavView = require('./views/top-nav.view');
 
 /* ==============================================
     Bootstrap views
 ============================================== */
 
 (function() {
-    var samplesView = new SamplesView();
+    var topNavView = new TopNavView();
 })();

@@ -1,8 +1,10 @@
-@@include('partials/header.html')
+@@include('partials/header.html', {
+    "page": "test"
+})
 
 <div class="container">
-    <h1>Тестовая страница</h1>
-    <p><a href="/">Вернуться на главную</a></p>
+    <h1>This is test page</h1>
+    <p><a href="/">Go back to home</a></p>
 </div>
 
 @@include('partials/footer.html')

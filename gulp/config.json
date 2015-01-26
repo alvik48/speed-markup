@@ -1,0 +1,27 @@
+{
+  "paths": {
+    "src": {
+      "html": "src/html",
+      "styles": "src/styles",
+      "fonts": "src/fonts",
+      "images": "src/images",
+      "js": "src/js"
+    },
+    "build": {
+      "html": "build",
+      "styles": "build/styles",
+      "fonts": "build/fonts",
+      "images": "build/images",
+      "js": "build/js"
+    }
+  },
+  "server": {
+    "port": 3000
+  },
+  "plugins": {
+    "autoprefixer": {
+      "browsers": ["last 2 versions", "Explorer > 8"],
+      "cascade": false
+    }
+  }
+}

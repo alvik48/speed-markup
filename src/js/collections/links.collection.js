@@ -4,12 +4,12 @@
     Import
 ============================================== */
 
-var Sample = require('./../models/sample.model');
+var Link = require('./../models/link.model');
 
 /* ==============================================
     Collection
 ============================================== */
 
 module.exports = Backbone.Collection.extend({
-    model: Sample
+    model: Link
 });

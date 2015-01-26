@@ -1,13 +1,13 @@
 @@include('../layout/head.html')
-@@include('./old-browser.html')
+@@include('old-browser.html')
 
 <header class="page-header">
     <div class="container">
-        <div class="top-nav">
-            <a href="/">Главная страница</a>
-            <a href="/test-page/">Тестовая страница</a>
+        <div class="logo">
+            Speed Markup
         </div>
+        @@include('../components/top-nav.html')
     </div>
 </header>
 
-<main role="main" class="page-@@page">
+<main role="main" class="page-container page-@@page">

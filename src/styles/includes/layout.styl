@@ -1,4 +1,11 @@
 /* ==============================================
+    Vars
+============================================== */
+
+$footer-height = 62px
+$footer-margin = 20px
+
+/* ==============================================
     Main layout. Sticky footer
 ============================================== */
 
@@ -25,9 +32,16 @@ main
 
 .container
   clear()
-  width $container-width
+  box-sizing border-box
+  width 100%
+  max-width 1200px
   margin 0 auto
+  padding 0 30px
   position relative
+
+.page-container
+  padding-top 84px
+
 
 /* ==============================================
     Rows & cols
