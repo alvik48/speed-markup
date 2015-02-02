@@ -8,7 +8,6 @@
   "dependencies": {
     "body-parser": "~1.8.1",
     "browser-sync": "^1.8.1",
-    "browserify-shim": "^3.8.1",
     "cookie-parser": "~1.3.3",
     "css-sprite": "~0.9.0",
     "debug": "~2.0.0",
@@ -25,30 +24,5 @@
     "morgan": "~1.3.0",
     "serve-favicon": "~2.1.3",
     "vinyl-transform": "^1.0.0"
-  },
-  "browserify": {
-    "transform": [
-      "browserify-shim"
-    ]
-  },
-  "browser": {
-    "jquery": "./bower_components/jquery/dist/jquery.js",
-    "underscore": "./bower_components/underscore/underscore.js",
-    "backbone": "./bower_components/backbone/backbone.js"
-  },
-  "browserify-shim": {
-    "jquery": {
-      "exports": "$"
-    },
-    "underscore": {
-      "exports": "_"
-    },
-    "./bower_components/backbone/backbone.js": {
-      "depends": [
-        "underscore",
-        "jquery"
-      ],
-      "exports": "Backbone"
-    }
   }
 }
