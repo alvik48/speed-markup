@@ -19,7 +19,8 @@ tasks.forEach(function(task) {
     Default task
 ============================================== */
 
-gulp.task('default', ['server', 'browserSync', 'sprite', 'base64', 'styles', 'js', 'images', 'html'], function () {
+gulp.task('default', ['server', 'browserSync','fonts', 'sprite', 'base64', 'styles', 'js', 'images', 'html'], function () {
+    gulp.watch('src/fonts/**/*.*', ['fonts']);
     gulp.watch('src/styles/**/*.styl', ['styles']);
     gulp.watch('src/images/sprite/*.*', ['sprite']);
     gulp.watch('src/images/inline/*.*', ['base64']);

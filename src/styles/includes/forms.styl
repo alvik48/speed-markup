@@ -2,27 +2,16 @@
     Vars
 ============================================== */
 
-/* paddings & margins */
-$input-padding-v = $main-font-size / 2
-$input-padding-h = $input-padding-v * 2
 
-$button-padding-v = $main-font-size / 4
-$button-padding-h = $input-padding-v * 4
-
-/* bg & border colors */
-$input-bg-color = $bg-color
-$input-border-color = $light-color
-$input-border-color-focus = $primary-color
-
-$button-border-color = $light-color
 
 /* ==============================================
     Reset & base styles
 ============================================== */
 
 select, input, textarea
-  font $main-font-size/$main-line-height $main-font-family
-  color $main-text-color
+  box-sizing border-box
+  font 1rem/$line-height $base-font
+  color $text-color
 
 label, input[type=button], input[type=submit], button
   cursor pointer
@@ -40,9 +29,6 @@ input[type=radio]
 input[type=checkbox]
   vertical-align bottom
 
-.ie7 input[type=checkbox]
-  vertical-align baseline
-
 button
   width auto
   overflow visible
@@ -51,15 +37,12 @@ button
     Forms layout
 ============================================== */
 
-.form-item
-  margin-bottom 10px
+form-item
+  margin-bottom .8rem
 
-.form-item label
-  display inline-block
-  margin-bottom 4px
-
-.form-submit
-  text-align right
+  label
+    display inline-block
+    margin-bottom 4px
 
 /* ==============================================
     Basic elements styles
@@ -67,26 +50,26 @@ button
 
 input[type=text], input[type=password], textarea, select
   box-shadow(inset 0 4px 4px rgba(0, 0, 0, .07))
-
-  background $input-bg-color
+  background $bg-color
   width 100%
-  padding $input-padding-v $input-padding-h
-  border 1px solid $input-border-color
+  padding .1rem .4rem
+  border 1px solid $dark-color
 
 input[type=text]:focus, input[type=password]:focus, select:focus, textarea:focus
-  border-color $input-border-color-focus
+  border-color $hover-color
 
 input[type=submit], input[type=button], button
-  padding $button-padding-v $button-padding-h
-  border 1px solid $button-border-color
-  background #eee
+  padding .1rem .4rem
+  border 1px solid $dark-color
+  background $light-color
+  border-radius 5px
 
 /* ==============================================
     Form validation
 ============================================== */
 
-.error
+error
   input, textarea, select,
   input:focus, textarea:focus, select:focus
-    border-color #c00
+    border-color $error-color
   

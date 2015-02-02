@@ -47,8 +47,11 @@ main
     Rows & cols
 ============================================== */
 
-.row
+row()
   clear()
-  .col
-    float left
-  
+
+col()
+  float left
+
+  &:first-child
+    margin-left 0
